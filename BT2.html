@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai tap 2</title>
+</head>
+<body>
+    <p id="result"></p>
+    <button onclick="convert()">Submit</button>
+    <script>
+        function convert() {
+            let number=prompt("Nhap so");
+            let ctr=number.substring();
+            let result=[ctr[0]];
+            for (let i=1; i<ctr.length;i++){
+                if (ctr[i-1]%2===0 && ctr[i]%2===0){
+                    result.push("-", ctr[i]);
+                }else {
+                    result.push(ctr[i]);
+                }
+            }
+            document.getElementById('result').innerHTML=result.join("");
+        }
+    </script>
+</body>
+</html>

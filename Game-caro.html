@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Caro</title>
+    <style>
+        .box {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body onload="creatCaroTable()">
+<div id="board"></div>
+<button onclick="startCaroGame()">Start Game</button>
+<button onclick="reset()">New Game</button>
+<p id="result"></p>
+<script>
+    let boxContent = "X";
+    let arrCaro = [];
+    let winer=null;
+    function reset() {
+        window.location.reload();
+    }
+    function creatCaroTable() {
+        let table = "<table border='1px solid: black'>";
+        for (let i = 0; i < 10; i++) {
+            arrCaro[i] = [];
+            table += "<tr>";
+            for (let j = 0; j < 10; j++) {
+                arrCaro[i][j] = "";
+                table += "<td id='" + i + "-" + j + "' onclick='checkBox(this)' class='box'>" + arrCaro[i][j] + "</td>";
+
+            }
+            table += "</tr>";
+        }
+        table += "</table>";
+        document.getElementById("board").innerHTML = table;
+    }
+
+    function startCaroGame() {
+        document.getElementById('result').innerHTML = "";
+        if (Math.random() < 0.5) {
+            boxContent = "O";
+        }
+
+        console.log(Math.random());
+        creatCaroTable();
+    }
+
+    function checkBox(box) {
+        if (winer!=null){
+
+        }else if (box.textContent == "") {
+            box.textContent = boxContent;
+            let valueBox = box.id.split("-");
+            arrCaro[valueBox[0]][valueBox[1]] = boxContent;
+            conditionWin(parseInt(valueBox[0]), parseInt(valueBox[1]), boxContent);
+            changePlayer();
+        }
+
+    }
+
+    function changePlayer() {
+        if (boxContent == "X") {
+            boxContent = "O";
+
+        } else {
+            boxContent = "X";
+        }
+        // conditionWin();
+    }
+
+    function conditionWin(a, b, value) {
+        let count1 = 1;
+        let count2 = 1;
+        let count3 = 1;
+        let count4 = 1;
+        //xet phuong ngang
+        for (let i = 1; i <3; i++) {
+            if (arrCaro[a][b] == arrCaro[a][b+i]) {
+                count1++;
+            } else {
+                break;
+            }
+        }
+        for (let i = 1; i <3; i++) {
+
+            if (arrCaro[a][b] == arrCaro[a][b-i]) {
+                count1++;
+            } else {
+                break;
+            }
+        }
+        // xet phuong doc
+        if (a < arrCaro.length - 2) {
+            for (let i = 1; i <3; i++) {
+                if (arrCaro[a][b] == arrCaro[a+i][b]) {
+                    count2++;
+                } else {
+                    break;
+                }
+            }
+        }
+        if (a > 1) {
+            for (let i =1; i <3; i++) {
+
+                if (arrCaro[a][b] == arrCaro[a-i][b]) {
+                    count2++;
+                } else {
+                    break;
+                }
+            }
+        }
+        //phuong cheo xuong
+        if (a < arrCaro.length - 2 && b < arrCaro[a].length - 2) {
+            for (let i = 1; i <3; i++) {
+                if (arrCaro[a][b] == arrCaro[a + i][b + i]) {
+                    count3++;
+                } else {
+                    break;
+                }
+            }
+        }
+        if (a > 1 && b >1) {
+            for (let i = 1; i <3; i++) {
+                if (arrCaro[a][b] == arrCaro[a - i][b - i]) {
+                    count3++;
+                } else {
+                    break;
+                }
+            }
+        }
+        //phuong cheo len
+        if (a>1 && b<arrCaro[a].length - 2){
+            for (let i = 1; i <3; i++) {
+                if (arrCaro[a][b] == arrCaro[a - i][b + i]) {
+                    count4++;
+                } else {
+                    break;
+                }
+            }
+        }
+        if (a<arrCaro.length-2 && b>1){
+            for (let i = 1; i <3; i++) {
+                if (arrCaro[a][b] == arrCaro[a + i][b - i]) {
+                    count4++;
+                } else {
+                    break;
+                }
+            }
+        }
+        console.log(count1);
+        console.log(count2);
+        console.log(count3);
+        console.log(count4);
+        if (count1 > 2) {
+            document.getElementById('result').innerHTML = "Player " + value + " win";
+            winer=value;
+        }
+        if (count2 > 2) {
+            document.getElementById('result').innerHTML = "Player " + value + " win";
+            winer=value;
+        }
+        if (count3 > 2) {
+            document.getElementById('result').innerHTML = "Player " + value + " win";
+            winer=value;
+        }
+        if (count4 > 2) {
+            document.getElementById('result').innerHTML = "Player " + value + " win";
+            winer=value;
+        }
+    }
+</script>
+</body>
+</html>
+
+

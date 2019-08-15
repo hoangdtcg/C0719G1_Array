@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea</title>
+</head>
+<body>
+<h2>Type anthing slowly</h2>
+<input onkeyup="textarea()" id="output" style="width: 250px; height: 200px; text-align: left">
+<script>
+    let messenger="ANH VƯƠNG ĐẸP TRAI!!!";
+    let count=0;
+    let arrMess = [];
+    function textarea() {
+        if (count<messenger.length) {
+            console.log(messenger);
+            arrMess.push(messenger[count]);
+            count++;
+            let result=arrMess.join("");
+            console.log(arrMess);
+            document.getElementById('output').value=result;
+        }else {
+            count=0;
+            arrMess=[];
+            document.getElementById('output').value='';
+        }
+        console.log(document.getElementById('output').value);
+    }
+</script>
+</body>
+</html>

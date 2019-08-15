@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tu dien</title>
+</head>
+<body>
+<input id="input">
+<button onclick="seach()">Seach</button>
+<p id="result">Translate: </p>
+<script>
+    let arrUs = ["dog", "cat", "dragon", "tiger", "chicken", "pig", "dophin", "fish", "buffalo", "cows"];
+    let arrVn = ["con cho", "con meo", "con rong", "con ho", "con ga", "con lon", "con ca heo", "con ca", "con trau", "con bo"];
+
+
+    function seach() {
+        let output = document.getElementById('input').value;
+        let count=0;
+        for (let i = 0; i < arrUs.length; i++) {
+            console.log(arrUs[i]);
+            if (output == arrUs[i]) {
+                document.getElementById('result').innerHTML = "Translate: " + arrVn[i];
+                break;
+
+            }else {
+                count++;
+            }
+
+
+        }
+        if (count==arrUs.length){
+            document.getElementById('result').innerHTML="Translate: khong co trong tu dien";
+            console.log(document.getElementById('result').innerHTML);
+        }
+
+    }
+</script>
+</body>
+</html>
