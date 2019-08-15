@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="result">ra: </p>
+<script>
+    /*   let arrName=[];
+       for(let i=0;i<3;i++){
+           arrName[i]=[];
+           for (let j=0;j<3;j++){
+               arrName[i][j]=[];
+           }
+       }console.log(arrName);
+
+     */
+    let arrName = [];
+    let data = '';
+    let boxContent = 'X';
+
+    for (let i = 0; i < 20; i++) {
+        arrName[i] = new Array(10);
+    }
+    console.log(arrName);
+
+    //    Hien thi mang
+
+    data += '<table border="4">';
+    for (i = 0; i < 20; i++) {
+        data += '<tr>';
+        for (j = 0; j < 20; j++) {
+            data += '<td onclick="checkBox(this)" id="' + i + '-' + j + '" style="width: 50px;height: 50px;text-align: center" ></td>';
+        }
+        data += '</tr>';
+    }
+    data += '</table>';
+    document.write(data);
+
+    //    doi id
+    function checkBox(check) {
+        if (check.textContent == '') {
+            check.textContent = boxContent;
+            let valueId = check.id.split('-');
+            arrName[valueId[0]][valueId[1]] = boxContent;
+
+            startGame(parseInt(valueId[0]), parseInt(valueId[1]), boxContent);
+            changePlayer();
+        }
+    }
+
+
+    function changePlayer() {
+        if (boxContent == 'X') {
+            boxContent = 'O';
+        } else boxContent = 'X';
+
+        startGame();
+    }
+
+
+    function startGame(X, Y, value) {
+        console.log(X);
+        console.log(Y);
+        console.log(value);
+        let count1 = 1;
+        let count2 = 1;
+        let count3 = 1;
+        let count4 = 1;
+
+        //duyet ngang
+
+        for (let i = 1; i < 5; i++) {
+            if (arrName[X][Y] == arrName[X][Y + i] || arrName[X][Y] == arrName[X][Y - i]) {
+                count1++;
+            } else break;
+        }
+
+        //duyet doc
+        if(X<arrName.length-4)
+        for (let i = 1; i < 5; i++) {
+            if (arrName[X][Y] == arrName[X + i][Y] || arrName[X][Y] == arrName[X - i][Y]) {
+                count2++;
+            } else break;
+        }
+
+        if (count1 > 4) {
+            document.getElementById('result').innerHTML = value + ' win';
+            return;
+        }
+        if (count2 > 4) {
+            document.getElementById('result').innerHTML = value + ' win';
+        }
+    }
+
+</script>
+</body>
+</html>

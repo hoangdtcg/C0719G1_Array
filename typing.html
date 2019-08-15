@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Type anything slowly</h1>
+<input id="input" onkeydown="txt()" type="text" style="width: 300px;height: 200px">
+<script>
+    let count=0;
+    let arrText=[];
+    let str='NGUYEN NGOC DIEU';
+    function txt() {
+        if(count<str.length){
+            arrText.push(str[count]);
+            count++;
+            let result=arrText.join("");
+            document.getElementById('input').value=result;
+        }
+        else {
+            count=0;
+            arrText=[];
+            document.getElementById('input').value=arrText;
+        }
+    }
+</script>
+</body>
+</html>
