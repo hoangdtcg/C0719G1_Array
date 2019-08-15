@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TIC TAC TOE</title>
+</head>
+
+<style>
+    body {
+        padding-top: 20px;
+    }
+
+    input {
+        width: 25px;
+        height: 25px;
+        background-color: white;
+        font-weight: bold;
+        text-align: center;
+        margin: -3px -3px -3px -3px;
+        padding: 0px 0px 0px 0px;
+    }
+</style>
+
+<body>
+
+<h3>Caro Game</h3>
+<div id="board"></div>
+
+<script>
+    let sout = "";
+    let x = 20;
+    let y = 20;
+    let array1 = new Array();
+    sout = "<table border='1' cellspacing='0' cellpadding='3'>";
+    for (let i = 0; i < x; i++) {
+        array1[i] = new Array();
+        sout = sout + "<tr>";
+        for (let j = 0; j < y; j++) {
+            let id = i + "-" + j;
+            array1[i][j] = "";
+            sout = sout + '<td><input type="button" id ="' + id + '" onclick ="changeValue(\'' + id + "')\")></input></td>";
+        }
+        sout = sout + "</tr>";
+    }
+    sout = sout + "</table>";
+    document.getElementById("board").innerHTML = sout;
+
+    let dem = 0;
+    let element = "";
+    function changeValue(id) {
+        let str = id.toString();
+        let indexI1 = "";
+        let indexJ1 = "";
+        for (let x = 0; x < str.length; x++) {
+            if (str[x] == "-") {
+                for (let m = 0; m < x; m++) {
+                    indexI1 += str[m];
+                }
+                for (let n = x+1; n < str.length; n++) {
+                    indexJ1 += str[n];
+                }
+            }
+        }
+        if (dem % 2 == 0) {
+            element = "X";
+            document.getElementById(id).value = element;
+            array1[indexI1][indexJ1] = element;
+            check();
+        } else {
+            element = "O";
+            document.getElementById(id).value = element;
+            array1[indexI1][indexJ1] = element;
+            check();
+        }
+        document.getElementById(id).disabled = true;
+        dem++;
+    }
+
+    function check() {
+        for (let i = 0; i < x - 4; i++) {
+            for (let j = 0; j < y; j++) {
+                if ((array1[i][j] == element) && (array1[i + 1][j] == element) && (array1[i + 2][j] == element) && (array1[i + 3][j] == element) && (array1[i + 4][j] == element)) {
+                    alert("Chien thang");
+                }
+            }
+        }
+        for (let i = 0; i < x; i++) {
+            for (let j = 0; j < y - 4; j++) {
+                if ((array1[i][j] == element) && (array1[i][j + 1] == element) && (array1[i][j + 2] == element) && (array1[i][j + 3] == element) && (array1[i][j + 4] == element)) {
+                    alert("Chien thang");
+                }
+            }
+        }
+        for (let i = 0; i < x - 4; i++) {
+            for (let j = 0; j < y - 4; j++) {
+                if ((array1[i][j] == element) && (array1[i + 1][j + 1] == element) && (array1[i + 2][j + 2] == element) && (array1[i + 3][j + 3] == element) && (array1[i + 4][j + 4] == element)) {
+                    alert("Chien thang");
+                }
+            }
+        }
+        for (let i = 0; i < x - 4; i++) {
+            for (let j = 4; j < y; j++) {
+                if ((array1[i][j] == element) && (array1[i + 1][j - 1] == element) && (array1[i + 2][j - 2] == element) && (array1[i + 3][j - 3] == element) && (array1[i + 4][j - 4] == element)) {
+                    alert("Chien thang");
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tu Dien</title>
+</head>
+
+<style>
+    body {
+        padding-top: 50px;
+    }
+</style>
+
+<body>
+
+<h3>TỪ ĐIỂN ANH VIỆT TRÁI CÂY</h3>
+<p>Nhập từ tiếng Anh bạn muốn tìm:</p>
+<input type="text" id="word">
+<input type="button" value="Tìm kiếm" onclick="dictionary()">
+<p id="result"></p>
+
+<script>
+    function dictionary() {
+        let word = document.getElementById("word").value;
+        let arrEnglish = ["orange", "banana", "lemon", "apple", "strawberry", "mango", "coconut", "watermelon", "melon"];
+        let arrVietnamese = ["Quả cam", "Quả chuối", "Quả chanh", "Quả táo", "Quả dâu tây", "Quả xoài", "Quả dừa", "Quả dưa hấu", "Quả dưa gang"];
+        let result = false;
+        let index = 0;
+        for (let i = 0; i < arrEnglish.length; i++) {
+            if (word == arrEnglish[i]) {
+                result = true;
+                index = i;
+            }
+        }
+        if (result) {
+            document.getElementById("result").innerHTML = arrVietnamese[index];
+        } else {
+            document.getElementById("result").innerHTML = "Không có từ bạn muốn tìm!"
+        }
+    }
+</script>
+
+</body>
+</html>
