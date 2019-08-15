@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="input" type="text">
+<input type="button" value="Search" onclick="transUs()">
+<p id="result">Result: </p>
+<script>
+    let arrUs=['dog','cat','cows','tiger','chicken','snack','pig'];
+    let arrVi=['con cho','con meo','con bo','con ho','con ga con','con ran','con lon'];
+    function transUs() {
+        let tempt=document.getElementById('input').value;
+
+        for (let i=0;i<arrUs.length;i++){
+            if(tempt==arrUs[i]){
+                document.getElementById('result').innerHTML='Result: '+ arrVi[i];
+                return;
+            }
+            else document.getElementById('result').innerHTML='Result: '+'loi';
+        }
+    }
+</script>
+</body>
+</html>
