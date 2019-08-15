@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai tap 1</title>
+</head>
+<body>
+<p id="bt1"></p>
+<button onclick="convert()">convert</button>
+<script>
+    function convert() {
+        let myColor = [];
+        for (let i=0; i<5; i++) {
+            let element = prompt("Nhap gia tri");
+            myColor.push(element);
+        }
+        document.getElementById('bt1').innerHTML = myColor.join();
+    }
+</script>
+</body>
+</html>
