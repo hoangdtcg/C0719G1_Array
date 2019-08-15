@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<input type="text" id="english"></input>
+<input type="button" id="btnDisplay" value="translate" onclick="display_vn();"></input>
+<div id="result"></div>
+<script>
+    let eng = ['ape', 'color', 'monkey', 'pig', 'dog'];
+    let vn = ['tinh tinh', 'màu sắc', 'khỉ', 'lợn', 'chó'];
+    function display_vn() {
+        let english = document.getElementById('english').value;
+        for (let i = 0; i < eng.length; i++) {
+            if (eng[i] == english) {
+                document.getElementById('result').innerHTML = vn[i];
+            }
+            if (eng.indexOf(english) == -1) {
+                alert('Không dịch được');
+                break;
+            }
+        }
+    }
+</script>
+</body>
+</html>

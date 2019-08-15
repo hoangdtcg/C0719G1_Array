@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<input type="text" id="color"></input>
+<input type="button" id="btnAdd" value="Add" onclick="add_color();"></input>
+<input type="button" id="btnDisplay" value="Display" onclick="display_array();"></input>
+<div id="result"></div>
+<script>
+    let myColor = new Array();
+    let x = 0
+    function add_color() {
+            myColor[x] = document.getElementById("color").value;
+            x++;
+            document.getElementById("color").value = "";
+    }
+
+    function display_array() {
+        document.getElementById("result").innerHTML = myColor.toString(" ");
+    }
+
+</script>
+</body>
+</html>
