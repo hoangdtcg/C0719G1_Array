@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+        .box
+        {
+            width:60px;
+            height: 60px;
+            text-align: center;
+            font-size: 30pt;
+            font-weight: bold;
+            font-family: Verdana;
+        }
+    </style>
+
+    <script>
+        let caro=[];
+        let xo="x";
+        let winner=null;
+        function createCaroTable(){
+            let table="<table border= '5' bgcolor= '#FFFFFF' id='table'> ";
+            for(let i=0; i <5; i++){
+                table+= "<tr>";
+                for(let j=0; j < 5; j++){
+                    table+="<td id='"+ i + "-" + j + "' class= 'box' onclick='move(this)'></td>"
+                }
+                table +="</tr>";
+            }
+            table +="</table>";
+            document.getElementById("table").innerHTML=table;
+        }
+        function init(){
+            caro=[];
+            for(let i=0; i<5;i++){
+                caro[i]=[".",".",".",".","."];
+            }
+        }
+        function isFullCaro()
+        {
+            for(let i=0;i<caro.length;i++){
+                for(let j=0; j< caro[i].length; j++){
+                    if(caro[i][j]=="."){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function beginGame()
+        {
+            init();
+            xo = "X";
+            if (Math.random()< 0.5)
+            {
+                xo = "O";
+            }
+            winner = null;
+            setMessage(xo + " Đi Trước.");
+            //xoaBan();
+            createCaroTable();
+        }
+
+        function setMessage(msg)
+        {
+            document.getElementById("message").textContent = msg;
+        }
+
+        function move(box)
+        {
+            if (winner != null)
+            {
+                setMessage(winner + " Đã Thắng Game Này!");
+            }
+            else if (box.textContent == "")
+            {
+                box.textContent = xo;
+                let pos=box.id.split("-");
+                caro[pos[0]][pos[1]]=xo;
+                changePlayer();
+            }
+            else
+            {
+                setMessage("Vị Trí này đã được sử dụng.")
+            }
+        }
+
+        function changePlayer()
+        {
+            if(isWinner(xo))
+            {
+                setMessage("Hoan Hô, " + xo+ "! Bạn Đã Thắng!");
+                winner = xo;
+            }
+            else if(isFullCaro())
+            {
+                setMessage("Game này Hòa, hãy chơi lại ván khác");
+            }
+            else if (xo == "X")
+            {
+                xo ="O";
+                setMessage("Đến Lượt đi của:  " + xo );
+            }
+            else
+            {
+                xo ="X";
+                setMessage("Đến lượt đi của:  " + xo);
+            }
+        }
+        function isWinner(move)
+        {
+            for(let i=0;i<caro.length;i++){
+                for(let j=0; j<caro[i].length; j++){
+                    if(caro.length >=3 && caro[i].length >=3){
+                        // kiểm tra phương ngang
+                        if(j < caro[i].length-2){
+                            if(move==caro[i][j] && caro[i][j]== caro[i][j+1] && caro[i][j]== caro[i][j+2]  ){
+                                return true;
+                            }
+                        }
+                        //kiểm tra phương dọc
+                        if(i< caro.length-2){
+                            if(move==caro[i][j] && caro[i][j]== caro[i+1][j] && caro[i][j]== caro[i+2][j]){
+                                return true;
+                            }
+                        }
+                        // kiểm tra chéo phải
+                        if(i < caro.length-2 && j < caro[i].length-2){
+                            if(move==caro[i][j] && caro[i][j]== caro[i+1][j+1] && caro[i][j]== caro[i+2][j+2] ){
+                                return true;
+                            }
+                        }
+
+                      //kiểm tra chéo trái
+                        if(i < caro.length-2 && j > 1){
+                            if(move==caro[i][j] && caro[i][j]== caro[i+1][j-1] && caro[i][j]== caro[i+2][j-2] ){
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return false;
+
+        }
+
+
+    </script>
+
+</head>
+
+<body onload= "beginGame()">
+<h1> Tic-Tac-Toe! (Chạm 3 trước là Thắng)</h1>
+<div id=message style="color: blue; font-size: 20px; font-weight: bold"> message </div>
+<div id="table"></div>
+<button type="button" onclick="beginGame()"> Start New Game</button>
+
+</body>
+</html>
