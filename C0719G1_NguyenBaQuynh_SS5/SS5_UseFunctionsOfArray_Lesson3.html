@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Convert Letters</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Input String: <input type="text" id="input" /> </td>
+        <td><button type="button" onclick="convertCase()">Insert Separator</button> </td>
+    </tr>
+</table>
+<p id="result" style="color:blue;"></p>
+<script>
+    let upperCase="QUERTYUIOPLKJHGFDSAZXCVBNM";
+    let lowerCase="qwertyuioplkjhgfdsazxcvbnm";
+    function convertCase(){
+        let text=document.getElementById("input").value;
+        let arr=[];
+        for(let i=0; i< text.length; i++){
+            if(upperCase.indexOf(text[i]) !== -1){
+                arr.push(text[i].toLowerCase());
+            }else if(lowerCase.indexOf(text[i])!==-1){
+                arr.push(text[i].toUpperCase());
+            }else{
+                arr.push(text[i]);
+            }
+        }
+        document.getElementById("result").innerHTML= "Result: " + arr.join("");
+    }
+</script>
+</body>
+</html>

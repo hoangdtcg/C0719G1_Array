@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Input Number: <input type="text" id="number" /> </td>
+        <td><button type="button" onclick="insertSeparator()">Insert Separator</button> </td>
+    </tr>
+</table>
+<p id="result"></p>
+<script>
+    function insertSeparator() {
+        let numberString= document.getElementById("number").value.trim();
+        let number=parseInt(document.getElementById("number").value.trim());
+        let result=[];
+        if(!isNaN(number)){
+            result=[numberString[0]];
+            for (let i=1; i < numberString.length; i++){
+                if(numberString[i-1]%2===0 && numberString[i]%2===0){
+                    result.push("-",numberString[i]);
+                }else{
+                    result.push(numberString[i]);
+                }
+            }
+            document.getElementById("result").innerHTML="Result: " + result.join("");
+        }else{
+            alert("Chuỗi Nhập phải là chuỗi số");
+            document.getElementById("result").innerHTML="";
+        }
+
+    }
+</script>
+
+</body>
+</html>
