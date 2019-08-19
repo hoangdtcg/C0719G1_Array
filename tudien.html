@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="input">
+<input type="button" value="Dịch" onclick="timkiem()">
+<input type="text" id="output">
+<script>
+    function timkiem() {
+        let arr1 = ['Apple', 'Lemon', 'Orange', 'Pear'];
+        let arr2 = ['Táo', 'Chanh', 'Cam', 'Nho']
+        let input = document.getElementById("input").value;
+        for (let i = 0; i < arr1.length; i++) {
+            if (input == arr1[i]) {
+                document.getElementById("output").value = arr2[i];
+                return;
+            }
+        }
+        alert('Không tìm thấy');
+    }
+</script>
+</body>
+</html>

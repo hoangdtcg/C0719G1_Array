@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ Nhập số cần thay đổi:
+        <input type ="text" id = "so">
+        <br>
+        <br>
+ <button type="button" onclick="kiemtra();">Click</button><br><br>
+<script>
+    function kiemtra() {
+        let so = parseInt(document.getElementById("so").value);
+        let mang = [];
+        let k = 1;
+        let i=0;
+       while (so>1) {
+            let trunggian = so % 10;
+            mang[i] = trunggian;
+            so = (so - (so % 10)) / 10;
+            i++;
+        }
+        let dem=i;
+        i=dem-1;
+        let vitridao=0;
+        while (vitridao<i){
+            trunggian=mang[i];
+            mang[i]= mang[vitridao];
+            mang[vitridao] = trunggian;
+            i--;
+            vitridao++;
+        }
+        for ( i = 0; i < dem; i++) {
+            document.write(mang[i]);
+            if (mang[i]%2==0 && mang[i+1]%2==0){
+                document.write("-");
+            }
+        }
+    }
+
+</script>
+
+
+</body>
+</html>
