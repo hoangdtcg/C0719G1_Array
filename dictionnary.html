@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TỪ ĐIỂN</title>
+</head>
+<body>
+<input type="text" id="inPut">
+<input type="button" value="Dịch" onclick="tranSlate()">
+<input type="text" id="outPut">
+<script>
+    function tranSlate() {
+        let viE =['Sách','Bút','Điện Thoại','Ô Tô'];
+        let enG =['Book','Pen','Mobilephone','Car'];
+        let input = document.getElementById("inPut").value;
+        for (let i=0;i<enG.length;i++){
+            if (input === enG[i]){
+                document.getElementById("outPut").value =viE[i];
+                return;
+            }
+        }
+        alert("Không tìm thấy kết quả");
+    }
+
+</script>
+</body>
+</html>
