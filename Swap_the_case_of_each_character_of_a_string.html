@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swap the case of each character of a string</title>
+</head>
+<body>
+<script>
+    //let str = ['T', 'h', 'e', 'Q', 'u', 'i', 'c', 'k', 'B', 'r', 'o', 'w', 'n', 'F', 'o', 'x'];
+    let str = "The Quick Brown Fox";
+    const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const LOWER = 'abcdefghijklmnopqrstuvwxyz';
+    let result = [];
+
+    /*for (i = 0; i < str.length; i++) {
+        if (UPPER.includes(str[i])) {
+            result.push(str[i].toLowerCase());
+        } else if (LOWER.includes(str[i])) {
+            result.push(str[i].toUpperCase());
+        } else {
+            result.push(str[i])
+        }
+    }*/
+
+    for (i = 0; i < str.length; i++) {
+        /*if (UPPER.indexOf(str[i] !== -1)) {
+            result.push(str[i].toLowerCase());
+        } else if (LOWER.indexOf(str[i] !== -1)) {
+            result.push(str[i].toUpperCase());
+        }else {
+            result.push(str[i]);
+        }*/
+        if (str[i]== str[i].toUpperCase()){
+            result.push(str[i].toLowerCase());
+        }else{
+            result.push(str[i].toUpperCase());
+        }
+    }
+    console.log(result.join(" "));
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h3>TỪ ĐIỂN ANH VIỆT</h3>
+<p>Nhập từ tiếng Anh bạn muốn tìm:</p>
+<input type="text" id="word">
+<input type="button" value="Tìm kiếm" onclick="dictionary()">
+<p id="result"></p>
+
+<script>
+    function dictionary() {
+        let word = document.getElementById("word").value;
+        let arrEnglish = ["flower", "rose", "orchid", "Laptop", "Pencil", "mango", "watermelon", "melon"];
+        let arrVietnamese = ["Bông hoa", "hoa hồng", "Hoa Lan", "Máy tính xách tay", "Bút Chì", "Quả xoài", "Quả dưa hấu", "Quả dưa gang"];
+        let result = false;
+        let index = 0;
+        for (let i = 0; i < arrEnglish.length; i++) {
+            if (word == arrEnglish[i]) {
+                result = true;
+                index = i;
+            }
+        }
+        if (result) {
+            document.getElementById("result").innerHTML = arrVietnamese[index];
+        } else {
+            document.getElementById("result").innerHTML = "Không có từ bạn muốn tìm!"
+        }
+    }
+</script>-->
+
+<script>
+    function dictionary() {
+        let x = prompt("Enter a word: ");
+        let arrEnglish = ["flower", "rose", "lemon", "apple", "strawberry", "mango", "coconut];
+        let arrVietnamese = ["Bông hoa", "Hoa hồng", "Quả chanh", "Quả táo", "Quả dâu tây", "Quả xoài", "Quả dừa"];
+        for (let i = 0; i < arrEnglish.length; i++) {
+            if (x == arrEnglish[i]) {
+                alert(x + " is " + arrVietnamese[i]);
+                return;
+            }
+        }
+        alert("Khong tim thay");
+    }
+
+    dictionary();
+</script>
+</body>
+</html>
