@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert dashes (-) between even numbers</title>
+</head>
+<body>
+<script>
+    let arrayNumbers = [0, 2, 5, 4, 6, 8,];
+    result = [arrayNumbers[0]];
+    for (i = 1; i < arrayNumbers.length; i++) {
+        if ((arrayNumbers[i - 1] % 2 === 0) && (arrayNumbers[i] % 2 === 0)) {
+            result.push('-', arrayNumbers[i]);
+        }else {
+            result.push(arrayNumbers[i])
+        }
+    }
+    console.log(result.join(''));
+
+
+</script>
+</body>
+</html>
